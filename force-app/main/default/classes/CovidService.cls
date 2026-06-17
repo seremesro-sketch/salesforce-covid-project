@@ -2,42 +2,19 @@ public with sharing class CovidService {
      @AuraEnabled
     public static String loadCovidData() {
 
-        HttpRequest req = new HttpRequest();
+        StaticResource sr = [
+            SELECT Body
+            FROM StaticResource
+            WHERE Name = 'covidData'
+            LIMIT 1
+        ];
 
-        req.setEndpoint(
-            'callout:CovidTracking/v1/us/daily.json'
-        );
-
-        req.setMethod('GET');
-        req.setHeader('Accept', 'application/json');
-        req.setHeader('User-Agent', 'Mozilla/5.0');
-        
-        Http http = new Http();
-
-        
-        HttpResponse res = http.send(req);
-
-        System.debug('STATUS CODE: ' + res.getStatusCode());
-        System.debug('STATUS: ' + res.getStatus());
-        System.debug('BODY: ' + res.getBody());
-        
-
-        if(res.getStatusCode() != 200){
-
-            throw new AuraHandledException(
-                'HTTP ERROR: ' +
-                res.getStatusCode() +
-                ' BODY: ' +
-                res.getBody()
-                
-            );
-
-        }
+        String responseBody = sr.Body.toString();
 
         List<CovidWrapper> data =
             (List<CovidWrapper>)
             JSON.deserialize(
-                res.getBody(),
+                responseBody,
                 List<CovidWrapper>.class
             );
 

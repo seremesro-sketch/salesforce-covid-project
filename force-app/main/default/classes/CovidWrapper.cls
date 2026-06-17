@@ -10,5 +10,6 @@ public with sharing class CovidWrapper {
         public Integer negativeIncrease;
         public Integer deathIncrease;
         public String hash;
+        public String lastModified;
     
 }

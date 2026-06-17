@@ -10,20 +10,26 @@ extends LightningElement {
 
     loadData() {
 
-        loadCovidData()
+         console.log('Botón presionado');
 
-        .then(result => {
+            loadCovidData()
 
-            this.message = result;
+            .then(result => {
 
-        })
+                console.log('Resultado Apex:', result);
 
-        .catch(error => {
+                this.message = result;
 
-            this.message =
-                error.body.message;
+            })
 
-        });
+            .catch(error => {
+
+                console.error('Error Apex:', error);
+
+                this.message =
+                    JSON.stringify(error);
+
+            });
 
     }
 }
