@@ -1,3 +1,10 @@
+/**
+ * Wrapper utilizado para deserializar la respuesta JSON
+ * proveniente del archivo covidData.json.
+ *
+ * Cada atributo corresponde a un campo recibido desde la
+ * fuente de datos COVID Tracking.
+ */
 public with sharing class CovidWrapper {
     
         public Integer TrackingDate;
