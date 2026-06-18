@@ -59,21 +59,17 @@ private static String saveCovidData(
     List<CovidWrapper> data
 ) {
 
-    Integer limitRecords = 20;
+    
 
     Set<String> incomingHashes =
         new Set<String>();
 
-    for(Integer i = 0;
-        i < Math.min(limitRecords,data.size());
-        i++) {
+    for(CovidWrapper item : data) {
 
-        if(data[i].hash != null) {
-            incomingHashes.add(
-                data[i].hash
-            );
-        }
+    if(item.hash != null) {
+        incomingHashes.add(item.hash);
     }
+}
 
     Set<String> existingHashes =
         new Set<String>();
@@ -96,16 +92,9 @@ private static String saveCovidData(
 
     Integer duplicateCount = 0;
 
-    for(Integer i = 0;
-        i < Math.min(limitRecords,data.size());
-        i++) {
+    for(CovidWrapper item : data) {
 
-        CovidWrapper item =
-            data[i];
-
-        if(existingHashes.contains(
-            item.hash
-        )) {
+        if(existingHashes.contains(item.hash)) {
 
             duplicateCount++;
             continue;
