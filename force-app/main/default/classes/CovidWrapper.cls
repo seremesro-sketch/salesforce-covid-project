@@ -20,4 +20,18 @@ public with sharing class CovidWrapper {
         public String hash;
         public String lastModified;
     
+        public CovidWrapper() {
+        TrackingDate = 0;
+        states = 0;
+        dateChecked = '';
+        positive = 0;
+        negative = 0;
+        hospitalizedCurrently = 0;
+        death = 0;
+        positiveIncrease = 0;
+        negativeIncrease = 0;
+        deathIncrease = 0;
+        hash = '';
+        lastModified = '';
+    }
 }
