@@ -1,0 +1,26 @@
+<template>
+
+    <lightning-card
+        title="COVID Tracking Dashboard">
+
+        <div class="slds-p-around_medium">
+
+            <lightning-button
+                label="Consultar Registros"
+                variant="brand"
+                onclick={loadTable}>
+            </lightning-button>
+
+        </div>
+
+        <lightning-datatable
+            key-field="Id"
+            data={data}
+            columns={columns}
+            onrowaction={handleRowAction}
+            hide-checkbox-column>
+        </lightning-datatable>
+
+    </lightning-card>
+
+</template>

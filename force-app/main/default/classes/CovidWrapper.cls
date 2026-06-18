@@ -9,6 +9,7 @@ public with sharing class CovidWrapper {
     
         public Integer TrackingDate;
         public Integer states;
+        public String dateChecked;
         public Integer positive;
         public Integer negative;
         public Integer hospitalizedCurrently;
